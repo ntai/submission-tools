@@ -1,5 +1,9 @@
 # NOTE - This Dockerfile is expected to run from tex2pdf_service directory
-FROM registry.gitlab.com/islandoftex/images/texlive:TL2023-2023-05-21-full
+# original development by NT
+#FROM registry.gitlab.com/islandoftex/images/texlive:TL2023-2023-05-21-full
+# 2024-03-24 NP use a TL image that contains fixes to the LaTeX kernel
+#   concerning search paths https://arxiv-org.atlassian.net/browse/ARXIVCE-1344
+FROM registry.gitlab.com/islandoftex/images/texlive:TL2023-2023-06-11-full
 RUN apt update && apt install -y python3-venv inkscape python3-pygments
 RUN useradd -rm -d /home/worker -s /bin/bash -g users -u 1000 worker
 
